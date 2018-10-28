@@ -1,4 +1,32 @@
-<p>
-  venta works!
-</p>
-formulario con venta
+<div class="container">
+  <form #ventaForm="ngForm">
+    <div [hidden]="ventaForm.submitted">
+
+      <div class="form-group">
+        <select   class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon">
+          <option selected>Seleccione...</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="canti">Cantidad vendida</label>
+        <input id="cantidad" name="canti" class="form-control" required minlength="1" type="number" [(ngModel)]="venta.cantidad"
+          #cantidad="ngModel">
+        <div *ngIf="cantidad?.invalid && (cantidad.dirty || cantidad?.touched)" class="alert alert-danger">
+          <div *ngIf="cantidad.errors.required">
+            La cantidad vendida es requerida.
+          </div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <a class="btn btn-primary btn-block" (click)="adicionarVenta()" (click)="ventaForm.resetForm({})">Guardar</a>
+        </div>
+        <div class="col-sm-6">
+          <a class="btn btn-primary btn-block" (click)="ventaForm.resetForm({})">Limpiar</a>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
