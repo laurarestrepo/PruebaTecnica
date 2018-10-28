@@ -1,11 +1,29 @@
-<p>
-  listar-producto works!
-</p>
-pagina inicial con tabla, con la opción de adicionar producto, se llama al otro componente y añadir al stock
+<legend>Lista productos</legend>
+<div class="container">
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th>Codigo</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Stock</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productosList">
+        <td>{{producto.id}}</td>
+        <td> {{producto.nombre}}</td>
+        <td> {{producto.descripcion}}</td>
+        <td> {{producto.stock}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-<!-- 
-<button routerLink="/crearProducto">Crear Producto</button>
-(llamar modal en la tabla para agregar la cantidad al producto) 
-<button routerLink="">Adicionar stock</button> -->
-
+<div>
+  <a href="producto/crearProducto" class="btn btn-primary btn-block" role="button" aria-pressed="true">Adicionar
+    producto</a>
+</div>
+<br>
 <router-outlet></router-outlet>
+<br>

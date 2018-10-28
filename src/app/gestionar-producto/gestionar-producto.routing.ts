@@ -6,16 +6,16 @@ import { AdicionarProductoComponent } from './adicionar-producto/adicionar-produ
 const routes: Routes = [{
     path: '', component: ListarProductoComponent
     , children: [
-
-    ],
-}, {
-    path: "crearProducto", component: AdicionarProductoComponent
+        {
+            path: "crearProducto", component: AdicionarProductoComponent
+        }
+    ]
 }
 ]
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+
 })
 export class ProductoRoutingModule { }
 

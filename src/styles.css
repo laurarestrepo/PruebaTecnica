@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+.byp-grid th {
+	background-repeat: repeat-x !important;
+    color: gray !important;
+    white-space: normal !important;
+    border-right: solid 1px white !important;
+    border-color: inherit !important;
+    background-color: #e7eff1 !important;
+    padding: 1px 1px 1px 1px !important;
+    text-align: center !important;
+    font-size: 11px !important;
+    font-family: Arial,Verdana,sans-serif !important;
+    font-weight: bold !important;
+}

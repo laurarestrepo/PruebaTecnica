@@ -1,5 +1,57 @@
-<p>
-  adicionar-producto works!
-</p>
+<div class="container">
+  <form #productosForm="ngForm">
+    <div [hidden]="productosForm.submitted">
 
-se presenta el formulario de adicionar un producto con cantidad, se debe validar si el producto ya existe 
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input #nombre id="nombre" required minlength="4" class="form-control" name="nombre" [(ngModel)]="producto.nombre">
+        <div *ngIf="nombre?.invalid && (nombre?.dirty || nombre?.touched)" class="alert alert-danger">
+          <div *ngIf="nombre.errors.required">
+            La descripción es requerida.
+          </div>
+          <div *ngIf="descripcion.errors.minlength">
+            La descripción debe tener almenos 4 caracteres de longitud.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <input id="descripcion" name="descripcion" class="form-control" required minlength="5" [(ngModel)]="producto.descripcion"
+          #descripcion="ngModel">
+        <div *ngIf="descripcion?.invalid && (descripcion?.dirty || descripcion?.touched)" class="alert alert-danger">
+          <div *ngIf="descripcion.errors.required">
+            La descripción es requerida.
+          </div>
+          <div *ngIf="descripcion.errors.minlength">
+            La descripción debe tener almenos 5 caracteres de longitud.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="stock">Stock</label>
+        <input id="stock" name="stock" class="form-control" required minlength="1" type="number" [(ngModel)]="producto.stock"
+          #stock="ngModel">
+        <div *ngIf="stock?.invalid && (stock.dirty || stock?.touched)" class="alert alert-danger">
+          <div *ngIf="stock.errors.required">
+            El stock es requerido.
+          </div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <a class="btn btn-primary btn-block" (click)="crearProducto()" (click)="productosForm.resetForm({})">Guardar
+            producto</a>
+        </div>
+        <div class="col-sm-6">
+          <a class="btn btn-primary btn-block" (click)="productosForm.resetForm({})">Limpiar</a>
+        </div>
+      </div>
+    </div>
+  </form>
+  <br>
+  <div>
+    <a href="producto" class="btn btn-primary btn-block" role="button" aria-pressed="true">Cancelar</a>
+  </div>
+</div>

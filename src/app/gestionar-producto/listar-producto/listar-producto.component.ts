@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GestionarProductoServicio } from '../servicio/gestionar-producto.service';
+import { ProductoDTO } from '../clases/productoDTO';
 
 @Component({
   selector: 'todoUno-listar-producto',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarProductoComponent implements OnInit {
 
-  constructor() { }
+  listaProductos: ProductoDTO[];
+
+  constructor(private gestionarProductoServicio: GestionarProductoServicio) { }
 
   ngOnInit() {
+    this.consultarProductos();
   }
 
+  public consultarProductos(): void {
+    this.gestionarProductoServicio.consultarProductos().subscribe(listaProductos =>
+      this.listaProductos = listaProductos, error => console.log(error));
+  }
 }
